@@ -12,7 +12,7 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-export const MapScreen = ({ navigation }) => {
+const RestaurantMap = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { lat, lng, viewport } = location;
   const { restaurants = [] } = useContext(RestaurantsContext);
@@ -30,7 +30,7 @@ export const MapScreen = ({ navigation }) => {
     <>
       <Search />
       <Map
-        initialRegion={{
+        region={{
           latitude: lat,
           longitude: lng,
           latitudeDelta: latDelta,
@@ -58,4 +58,12 @@ export const MapScreen = ({ navigation }) => {
       </Map>
     </>
   );
+};
+
+export const MapScreen = (props) => {
+  const { location } = useContext(LocationContext);
+  if (!location) {
+    return <Map region={{ latitude: 0, longitude: 0 }} />;
+  }
+  return <RestaurantMap {...props} />;
 };
