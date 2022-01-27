@@ -8,7 +8,7 @@ const SettingsStack = createNativeStackNavigator();
 
 export const SettingsNavigator = ({ route, navigation }) => {
   return (
-    <SettingsStack.Navigator>
+    <SettingsStack.Navigator screenOptions={{ headerShown: false }}>
       <SettingsStack.Screen name="Settings" component={SettingsScreen} />
       <SettingsStack.Screen name="Favourites" component={FavouritesScreen} />
       <SettingsStack.Screen name="Camera" component={CameraScreen} />
